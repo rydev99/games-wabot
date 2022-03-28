@@ -1,4 +1,4 @@
-const { createHash } = require('crypto')
+import createHash from 'crypto'
 let Reg = /(.*)([.|])([0-9]*)$/i
 let handler = async function (m, { text, usedPrefix }) {
   let user = global.DATABASE._data.users[m.sender]
@@ -15,17 +15,17 @@ let handler = async function (m, { text, usedPrefix }) {
   m.reply(`
 Daftar berhasil!
 
-╭─「 Info 」
-│ Nama: ${name}
-│ Umur: ${age}thn
-│ SN: ${sn}
-╰────
+#* Info "
+Nama: ${name}
+Umur: ${age}tahun
+ SN: ${sn}
+
 `.trim())
 }
 handler.help = ['daftar', 'reg', 'register'].map(v => v + ' <nama>.<umur>')
-handler.tags = ['exp']
+handler.tags = ['main']
 
 handler.command = /^(daftar|reg(ister)?)$/i
 
-module.exports = handler
+export default handler
 
